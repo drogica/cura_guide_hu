@@ -1,0 +1,9 @@
+# Minimális sebesség
+
+Ha egy réteg nyomtatása nagyon kevés időt vesz igénybe, a nyomtatási sebesség lecsökken, így a rétegnek továbbra is a [minimális rétegidőre](cool_min_layer_time.md) van szüksége a nyomtatáshoz. Ez azonban nem csökken e minimális sebesség alá. Ha a réteg minimális sebességgel történő nyomtatása kevesebbet vesz igénybe, mint a Minimális rétegidő, a nyomtató a réteg végén vár, amíg a minimális rétegidő letelik.
+
+A minimális rétegidő érvényesítése azért fontos, hogy lehetővé tegye az előző réteg megszilárdulását, mielőtt a következő réteget ráhelyezné. A nyomtatási sebesség csökkentése segít, mert a nyomtatófejen lévő ventilátorok tovább fújhatják az izzószálat. A nyomtatási sebesség túlzott csökkentése azonban káros, mert a fúvókából származó hő átterjedhet az alsóbb rétegekre és a szomszédos falakra. Emiatt a felület nagyon piszkossá válhat, és helyi megereszkedést okozhat. Ezért van egy minimális sebesség is. A réteg végén a nyomtatófej általában egy kicsit feljebb mozdul (hacsak nincs letiltva a [Lift Head](cool_lift_head.md) beállítás), így a ventilátor egy kicsit tovább fújja az izzószálat, amíg le nem telik a minimális rétegidő. A nyomtató ezután a következő réteggel folytatja.
+
+![Melyik ventilátor sebességet hol használják](../images/cool_fan_speed.svg)
+
+Például egy nagyon kis részen lehet olyan réteg, amely 3 másodpercet vesz igénybe a normál, 30 mm/s sebességű nyomtatáshoz, de a Minimális rétegidő beállítás 10 másodpercre van állítva. A nyomtató ezután 9 mm/s-ra csökkenti a sebességét, így pontosan 10 másodpercet vesz igénybe az adott rész kinyomtatása. Ha azonban a Minimális sebesség 10 mm/s-ra van állítva, akkor a nyomtató 10 mm/s sebességgel nyomtatja ki ezt a réteget, és 9 másodperc múlva fejezi be. Ha [a fejemelés](cool_lift_head.md) engedélyezve van, a nyomtató 1 másodpercet vár a réteg végén, mielőtt a következővel kezdené (és egyébként azonnal, várakozás nélkül folytatja).
